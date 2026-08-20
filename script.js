@@ -6,7 +6,7 @@ const AR_URL =
   "https://ar.pinterest.com/ryurkive/photobook-%E6%A5%BDwings/wardrobecasual/";
 
 const HAPPINESS_URL =
-  "https://ar.pinterest.com/ryurkive/photobook-%E6%A5%BDwings/wardrobecasual/";
+  "https://ar.pinterest.com/ryurkive/photobook-楽wings/wardrobeformal/";
 
 const HAZY_MY_MELODY_URL =
   "https://app.notion.com/p/pretty-3c213bc2724c80c9895bf4de39ae0656";
