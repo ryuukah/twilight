@@ -40,7 +40,7 @@ const menuPanel =
 ========================================= */
 
 function go(url) {
-  window.location.href = url;
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 
