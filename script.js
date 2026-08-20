@@ -1,21 +1,4 @@
 /* =========================================
-   DESTINATION LINKS
-========================================= */
-
-const AR_URL =
-  "https://ar.pinterest.com/ryurkive/photobook-%E6%A5%BDwings/wardrobecasual/";
-
-const HAPPINESS_URL =
-  "https://ar.pinterest.com/ryurkive/photobook-楽wings/wardrobeformal/";
-
-const HAZY_MY_MELODY_URL =
-  "https://app.notion.com/p/pretty-3c213bc2724c80c9895bf4de39ae0656";
-
-const STARRY_SLEEP_URL =
-  "https://app.notion.com/p/tiramissu-3c213bc2724c807bae01ebc026e9b668";
-
-
-/* =========================================
    ELEMENTS
 ========================================= */
 
@@ -34,18 +17,16 @@ const slider =
 const menuPanel =
   document.getElementById("menuPanel");
 
+const itemsWindow =
+  document.querySelector(".items-window");
 
-/* =========================================
-   NAVIGATION
-========================================= */
-
-function go(url) {
-  window.top.location.href = url;
-}
+const cards = [
+  ...document.querySelectorAll(".item-card")
+];
 
 
 /* =========================================
-   HAZY SLEEP AUDIO
+   HAZY SLEEP — HELLO KITTY AUDIO
 ========================================= */
 
 async function toggleAudio() {
@@ -87,7 +68,7 @@ async function toggleAudio() {
 }
 
 
-/* CLICK */
+/* CLICK AUDIO ITEM */
 
 audioCard.addEventListener(
   "click",
@@ -95,11 +76,11 @@ audioCard.addEventListener(
 );
 
 
-/* KEYBOARD */
+/* KEYBOARD AUDIO ITEM */
 
 audioCard.addEventListener(
   "keydown",
-  (event) => {
+  function (event) {
 
     if (
       event.key === "Enter" ||
@@ -116,11 +97,11 @@ audioCard.addEventListener(
 );
 
 
-/* WHEN AUDIO FINISHES */
+/* AUDIO FINISHED */
 
 audio.addEventListener(
   "ended",
-  () => {
+  function () {
 
     audioCard.classList.remove(
       "is-playing"
@@ -131,70 +112,14 @@ audio.addEventListener(
 
 
 /* =========================================
-   ITEM LINKS
+   FURNITURE
 ========================================= */
-
-
-/* HAZY SLEEP — MY MELODY */
-
-document
-  .getElementById("hazyMyMelody")
-  .addEventListener(
-    "click",
-    () => {
-      go(HAZY_MY_MELODY_URL);
-    }
-  );
-
-
-/* STARRY SLEEP */
-
-document
-  .getElementById("starrySleep")
-  .addEventListener(
-    "click",
-    () => {
-      go(STARRY_SLEEP_URL);
-    }
-  );
-
-
-/* =========================================
-   TOP TABS
-========================================= */
-
-
-/* POSE FOR AR */
-
-document
-  .getElementById("arTab")
-  .addEventListener(
-    "click",
-    () => {
-      go(AR_URL);
-    }
-  );
-
-
-/* HAPPINESS */
-
-document
-  .getElementById("happinessTab")
-  .addEventListener(
-    "click",
-    () => {
-      go(HAPPINESS_URL);
-    }
-  );
-
-
-/* FURNITURE */
 
 document
   .getElementById("furnitureTab")
   .addEventListener(
     "click",
-    () => {
+    function () {
 
       alert(
         "Furniture is not set up yet."
@@ -204,70 +129,20 @@ document
   );
 
 
-/* CLOTHES */
+/* =========================================
+   CLOTHES TAB
+========================================= */
 
 document
   .getElementById("clothesTab")
   .addEventListener(
     "click",
-    () => {
+    function () {
 
-      document
-        .querySelector(".items-window")
-        .scrollTo({
-          left: 0,
-          behavior: "smooth"
-        });
-
-    }
-  );
-
-
-/* =========================================
-   BACK BUTTON
-========================================= */
-
-document
-  .getElementById("backButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      if (window.history.length > 1) {
-
-        window.history.back();
-
-      } else {
-
-        window.location.href =
-          "index.html";
-
-      }
-
-    }
-  );
-
-
-/* =========================================
-   PLUS BUTTON
-========================================= */
-
-document
-  .getElementById("plusButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      const count =
-        document.getElementById(
-          "sparkleCount"
-        );
-
-      count.textContent =
-        Number(
-          count.textContent
-            .replace(/,/g, "")
-        ) + 1;
+      itemsWindow.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
 
     }
   );
@@ -281,109 +156,130 @@ document
   .getElementById("shopButton")
   .addEventListener(
     "click",
-    () => {
+    function () {
 
-      document
-        .querySelector(".items-window")
-        .scrollTo({
-          left: 0,
-          behavior: "smooth"
-        });
+      itemsWindow.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
 
     }
   );
 
 
 /* =========================================
-   MENU
+   PLUS BUTTON
+========================================= */
+
+document
+  .getElementById("plusButton")
+  .addEventListener(
+    "click",
+    function (event) {
+
+      /*
+       * Prevents the click from affecting
+       * anything behind the button.
+       */
+
+      event.stopPropagation();
+
+      const count =
+        document.getElementById(
+          "sparkleCount"
+        );
+
+      const current =
+        Number(
+          count.textContent
+            .replace(/,/g, "")
+        );
+
+      count.textContent =
+        current + 1;
+
+    }
+  );
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+document
+  .getElementById("backButton")
+  .addEventListener(
+    "click",
+    function () {
+
+      window.history.back();
+
+    }
+  );
+
+
+/* =========================================
+   MENU BUTTON
 ========================================= */
 
 document
   .getElementById("menuButton")
   .addEventListener(
     "click",
-    () => {
+    function () {
 
-      const open =
+      const shouldOpen =
         menuPanel.hidden;
 
       menuPanel.hidden =
-        !open;
+        !shouldOpen;
 
       document
         .getElementById("menuButton")
         .setAttribute(
           "aria-expanded",
-          String(open)
+          String(shouldOpen)
         );
 
     }
   );
 
 
-/* MENU → CLOTHES */
+/* =========================================
+   MENU → CLOTHES
+========================================= */
 
 document
   .getElementById("menuClothes")
   .addEventListener(
     "click",
-    () => {
+    function () {
 
       menuPanel.hidden = true;
 
-      document
-        .querySelector(".items-window")
-        .scrollTo({
-          left: 0,
-          behavior: "smooth"
-        });
+      itemsWindow.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
 
-    }
-  );
-
-
-/* MENU → AR */
-
-document
-  .getElementById("menuAR")
-  .addEventListener(
-    "click",
-    () => {
-      go(AR_URL);
-    }
-  );
-
-
-/* MENU → HAPPINESS */
-
-document
-  .getElementById("menuHappiness")
-  .addEventListener(
-    "click",
-    () => {
-      go(HAPPINESS_URL);
     }
   );
 
 
 /* =========================================
-   ITEM SLIDER
+   SLIDER
 ========================================= */
-
-const cards =
-  [
-    ...document.querySelectorAll(
-      ".item-card"
-    )
-  ];
-
 
 slider.addEventListener(
   "input",
-  () => {
+  function () {
 
     const index =
       Number(slider.value);
+
+    if (!cards[index]) {
+      return;
+    }
 
     cards[index].scrollIntoView({
       behavior: "smooth",
@@ -396,45 +292,47 @@ slider.addEventListener(
 
 
 /* =========================================
-   KEEP SLIDER POSITION IN SYNC
+   KEEP SLIDER IN SYNC
 ========================================= */
-
-const itemsWindow =
-  document.querySelector(
-    ".items-window"
-  );
-
 
 const observer =
   new IntersectionObserver(
-    (entries) => {
+    function (entries) {
 
       const visible =
         entries
           .filter(
-            entry =>
-              entry.isIntersecting
+            function (entry) {
+              return entry.isIntersecting;
+            }
           )
           .sort(
-            (a, b) =>
-              b.intersectionRatio -
-              a.intersectionRatio
+            function (a, b) {
+
+              return (
+                b.intersectionRatio -
+                a.intersectionRatio
+              );
+
+            }
           )[0];
 
 
-      if (visible) {
+      if (!visible) {
+        return;
+      }
 
-        const index =
-          cards.indexOf(
-            visible.target
-          );
 
-        if (index >= 0) {
+      const index =
+        cards.indexOf(
+          visible.target
+        );
 
-          slider.value =
-            index;
 
-        }
+      if (index >= 0) {
+
+        slider.value =
+          index;
 
       }
 
@@ -451,6 +349,43 @@ const observer =
 
 
 cards.forEach(
-  card =>
-    observer.observe(card)
+  function (card) {
+
+    observer.observe(card);
+
+  }
+);
+
+
+/* =========================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+========================================= */
+
+document.addEventListener(
+  "click",
+  function (event) {
+
+    const menuButton =
+      document.getElementById(
+        "menuButton"
+      );
+
+    if (
+      menuPanel.hidden ||
+      menuPanel.contains(event.target) ||
+      menuButton.contains(event.target)
+    ) {
+
+      return;
+
+    }
+
+    menuPanel.hidden = true;
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  }
 );
