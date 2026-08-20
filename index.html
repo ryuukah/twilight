@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="shop-app">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+      <button class="shop-title" id="shopButton" aria-label="Shop">
+        <span class="shop-icon">▦</span>
+        <span>Shop</span>
+      </button>
+
+      <div class="stats">
+
+        <div class="stat">
+          <span class="sparkle">✦</span>
+          <span id="sparkleCount">0</span>
+          <button class="plus" id="plusButton" aria-label="Add">+</button>
+        </div>
+
+        <div class="stat hearts">
+          <span>♥</span>
+          <span id="heartCount">34,745</span>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- TABS -->
+    <nav class="tabs" aria-label="Shop categories">
+
+      <button class="tab" id="furnitureTab">
+        Furniture
+      </button>
+
+      <button class="tab active" id="clothesTab">
+        Clothes
+      </button>
+
+      <button class="tab" id="arTab">
+        Pose for AR
+      </button>
+
+      <button class="tab" id="happinessTab">
+        Happiness
+      </button>
+
+    </nav>
+
+
+    <!-- ITEMS -->
+    <section class="items-window" aria-label="Clothes">
+
+      <div class="items-track" id="itemsTrack">
+
+
+        <!-- HAZY SLEEP — HELLO KITTY -->
+        <article
+          class="item-card audio-card"
+          id="hazyHelloKitty"
+          tabindex="0"
+          role="button"
+          aria-label="Hazy Sleep Hello Kitty. Click to play or stop the audio."
+        >
+
+          <div class="item-icon">
+            ♡
+          </div>
+
+          <h2>
+            Hazy Sleep
+          </h2>
+
+          <div class="item-image-wrap">
+
+            <img
+              src="assets/hazy-hello-kitty.png"
+              alt="Hazy Sleep Hello Kitty"
+            >
+
+          </div>
+
+          <div class="price">
+            <span>♥</span>
+            39,000
+          </div>
+
+          <div
+            class="playing-indicator"
+            id="playingIndicator"
+          >
+            ♫ playing
+          </div>
+
+        </article>
+
+
+        <!-- HAZY SLEEP — MY MELODY -->
+        <article
+          class="item-card link-card"
+          id="hazyMyMelody"
+          tabindex="0"
+          role="link"
+          aria-label="Hazy Sleep My Melody"
+        >
+
+          <div class="item-icon bunny">
+            ◒
+          </div>
+
+          <h2>
+            Hazy Sleep
+          </h2>
+
+          <div class="item-image-wrap">
+
+            <img
+              src="assets/hazy-my-melody.png"
+              alt="Hazy Sleep My Melody"
+            >
+
+          </div>
+
+          <div class="price">
+            <span>♥</span>
+            39,000
+          </div>
+
+        </article>
+
+
+        <!-- STARRY SLEEP -->
+        <article
+          class="item-card link-card"
+          id="starrySleep"
+          tabindex="0"
+          role="link"
+          aria-label="Starry Sleep"
+        >
+
+          <div class="item-icon starry">
+            ✦
+          </div>
+
+          <h2>
+            Starry Sleep
+          </h2>
+
+          <div class="item-image-wrap">
+
+            <img
+              src="assets/starry-sleep.png"
+              alt="Starry Sleep"
+            >
+
+          </div>
+
+          <div class="price">
+            <span>♥</span>
+            39,000
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOTTOM BAR -->
+    <footer class="bottom-bar">
+
+      <button
+        class="back-button"
+        id="backButton"
+        aria-label="Go back"
+      >
+        ↩
+      </button>
+
+
+      <div class="scroll-control">
+
+        <div class="scroll-line"></div>
+
+        <input
+          id="itemSlider"
+          type="range"
+          min="0"
+          max="2"
+          value="0"
+          step="1"
+          aria-label="Scroll through items"
+        >
+
+      </div>
+
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-expanded="false"
+      >
+
+        <span class="menu-book">
+          ▤
+        </span>
+
+        <span>
+          Menu
+        </span>
+
+      </button>
+
+    </footer>
+
+
+    <!-- MENU -->
+    <div
+      class="menu-panel"
+      id="menuPanel"
+      hidden
+    >
+
+      <button id="menuClothes">
+        Clothes
+      </button>
+
+      <button id="menuAR">
+        Pose for AR
+      </button>
+
+      <button id="menuHappiness">
+        Happiness
+      </button>
+
+    </div>
+
+
+    <!-- AUDIO -->
+    <audio
+      id="hazyAudio"
+      preload="auto"
+      src="audio/hazy-sleep.mp3"
+    ></audio>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
